@@ -12,33 +12,49 @@ The platform uses a 100% disconnected, fully nested structure where each engine 
 ---
 
 ## 📂 Project Directory Structure
+```
 
-```text
 ai-project-management/
 ├── docs/                 # System architecture specifications and Mermaid blueprints
 │   └── architecture.md   # Offline visual infrastructure documentation
 ├── frontend/             # Next.js client-side application layer (Formerly plan-ai)
 │   ├── public/           # Static asset assets (logos, images, global icons)
-│   └── src/              # Main source directory using explicit src/ architecture
-│       ├── app/          # Next.js App Router (pages, global middleware, layouts)
-│       ├── components/   # Modular UI blocks categorized by canvas domain
-│       │   ├── ui/       # shadcn/ui primitives (Button, Dialog, Badge components)
-│       │   ├── layout/   # Core structural layouts (Sidebar.tsx, Header.tsx)
-│       │   └── dashboard/# High-fidelity canvas views (TaskBoard.tsx, MetricCard.tsx)
-│       ├── store/        # Zustand state trees for lightning-fast workspace management
-│       ├── styles/       # Core styling properties and Tailwind configuration bridges
-│       └── types/        # Strict TypeScript type interfaces for safe object data compilation
+│   ├── src/              # Main source directory using explicit src/ architecture
+│   │   ├── app/          # Next.js App Router (pages, global middleware, layouts)
+│   │   │   ├── api/      # Backend integration endpoints
+│   │   │   ├── dashboard/# User dashboard views and analytical data
+│   │   │   └── login/    # User authentication and entry portal
+│   │   ├── components/   # Modular UI blocks categorized by canvas domain
+│   │   │   ├── Home/     # Public landing pages and generic views
+│   │   │   ├── ui/       # shadcn/ui primitives (Button, Dialog, Badge components)
+│   │   │   ├── layout/   # Core structural layouts (Sidebar.tsx, Header.tsx)
+│   │   │   └── dashboard/# High-fidelity canvas views (TaskBoard.tsx, MetricCard.tsx)
+│   │   ├── lib/          # Shared utility hooks, functions, and API clients
+│   │   ├── store/        # Zustand state trees for lightning-fast workspace management
+│   │   ├── Svg/          # Raw SVG asset components and icons
+│   │   ├── styles/       # Core styling properties and Tailwind configuration bridges
+│   │   └── types/        # Strict TypeScript type interfaces for safe object data compilation
 │   ├── tailwind.config.ts# High-tech Figma design tokens and semantic theme configuration
 │   └── package.json      # Frontend micro-dependencies manifest
 ├── backend-core/         # NestJS enterprise relational business server
 │   ├── src/              # Core source logic split by isolated domain modules
+│   │   └── module/       # Domain-driven feature modules
+│   │       ├── prisma/   # Prisma service and database module connection
+│   │       └── project/  # Project management services and business logic
+│   │           └── dto/  # Data Transfer Objects for validation and payload structural rules
 │   └── prisma/           # Database object models, relation maps, and schemas
-└── ai-engine/            # Python FastAPI intelligence service layer
-    ├── app/              # LangChain predictive pipelines and background processes
-    └── requirements.txt  # Python micro-dependencies management manifest
+│       └── migration/    # SQL migration history files
+└── ai-engine/            # Python-based processing unit for smart features
+    ├── app/              # Application logic
+    │   ├── api/          # API Endpoints (FastAPI Routers)
+    │   ├── core/         # Configuration & Shared Logic
+    │   └── worker/       # Celery background tasks
+    ├── task/             # Shared Task schemas
+    ├── main.py           # Engine Entry point
+    └── requirements.txt  # Python package dependencies
+
 ```
 
----
 
 ## ⚙️ Micro-Stack Components Breakdown
 
@@ -70,5 +86,20 @@ ai-project-management/
 
 The frontend enforcement layer utilizes unified, strict TypeScript interfaces located at `src/types/index.ts`. Any backend transaction payload or AI system event string must match these types to guarantee data validation continuity.
 
-* **Task Engine**: Managed via explicit enum states (`TaskStatus`, `TaskPriority`).
-* **AI Layer Predictive Objects**: Features integrated safety metrics including `confidenceScore` and real-time risk tiers.
+
+## 🏗️ System Architecture
+This project utilizes a distributed microservices approach:
+
+- **Client Canvas (Frontend):** Next.js 16.0.2, Tailwind v4. (Port: 3000)
+- **Relational Core (Backend):** NestJS, Prisma. (Port: 4000)
+- **Intelligence Node (AI Engine):** Python, FastAPI. (Port: 8000)
+
+## 🚦 Infrastructure Status
+- [x] **Frontend:** Connected
+- [x] **Core Node:** Operational
+- [x] **AI Node:** Operational
+
+## ⚙️ Boot Sequence
+1. Start Core Node (`npm run start:dev` in /backend-core)
+2. Start AI Node (`uvicorn main:app --reload --port 8000` in /ai-engine)
+3. Start Client Canvas (`npm run dev` in /frontend)

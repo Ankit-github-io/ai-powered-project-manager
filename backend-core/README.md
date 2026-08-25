@@ -12,12 +12,14 @@ This is the enterprise-grade backend core engine for the AI-Powered Project Mana
 ## 📂 Directory Structure (Core)
 
 ```text
-backend-core/
-├── prisma/               # Database blueprint & migration files
-└── src/                  # NestJS application source code
-    ├── prisma/           # Global Prisma database bridge module
-    ├── project/          # Project management business logic
-    ├── app.module.ts     # Main application root module
-    └── main.ts           # Server entry point configuration
+├── backend-core/         # NestJS enterprise relational business server
+│   ├── src/              # Core source logic split by isolated domain modules
+│   │   └── module/       # Domain-driven feature modules
+│   │       ├── prisma/   # Prisma service and database module connection
+│   │       └── project/  # Project management services and business logic
+│   │           └── dto/  # Data Transfer Objects for validation and payload structural rules
+│   └── prisma/           # Database object models, relation maps, and schemas
+│       └── migration/    # SQL migration history files
 
+```
 
