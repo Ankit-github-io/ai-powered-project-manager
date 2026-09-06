@@ -11,7 +11,7 @@ export function RoadmapCard () {
         AI Roadmap Engine
       </h3>
       <p className="text-sm text-[#525252] leading-relaxed mb-6">
-        Describe your goal in plain English. Nexus generates a full sprint
+        Describe your goal in plain English. Sprint AI generates a full sprint
         roadmap with tasks, milestones, and deadlines.
       </p>
       <div className="bg-[#0d0d0d] border border-[#1e1e1e] rounded-xl p-4 space-y-2.5">

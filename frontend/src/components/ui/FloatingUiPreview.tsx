@@ -106,7 +106,7 @@ export function FloatingUIPreview({ className }: { className?: string }) {
           <span className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
           <span className="w-3 h-3 rounded-full bg-[#28c940]" />
           <div className="ml-3 flex-1 max-w-xs bg-[#1a1a1a] border border-[#262626] rounded-md px-3 py-1 text-[11px] text-[#525252]">
-            app.nexus.so/project/design-system
+            app.SprintAI.so/project/design-system
           </div>
         </div>
         {/* {MINI Kanban preview} */}

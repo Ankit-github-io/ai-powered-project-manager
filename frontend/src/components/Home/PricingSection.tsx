@@ -164,6 +164,7 @@ export const PricingSection = React.forwardRef<
                 theme={tier.theme}
                 isActive={index === 1}
                 activeTheme={tier.theme}
+                className="h-full rounded-2xl p-7 overflow-hidden relative flex flex-col justify-between"
               >
                 <div className="flex justify-between items-center mb-6 relative">
                   <span className="text-sm font-semibold text-[#EDEDED]">
@@ -216,7 +217,7 @@ export const PricingSection = React.forwardRef<
                 </ul>
                 <Button
                   className={cn(
-                    "w-full h-10 py-3 px-2 rounded-xl border border-[#262626] text-[#717171] text-sm font-medium transition-all",
+                    "w-full h-10 py-3 px-2 rounded-xl border border-[#262626] text-[#717171] text-sm font-medium transition-all active:scale-[0.97] duration-150 cursor-pointer",
                     tier.popular
                       ? "text-white bg-violet-600  hover:bg-violet-500 shadow-lg shadow-violet-600/30 transition-colors"
                       : "hover:border-[#3a3a3a] hover:text-[#ededed] hover:bg-[#141414]",

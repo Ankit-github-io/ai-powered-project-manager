@@ -1,7 +1,7 @@
 // example purpose 
 export const TESTIMONIALS = [
   {
-    quote: "Nexus cut our sprint planning from 3 hours to 20 minutes. The AI roadmap is genuinely magic.",
+    quote: "Sprint AI cut our sprint planning from 3 hours to 20 minutes. The AI roadmap is genuinely magic.",
     name: "Priya N.",
     role: "VP Engineering",
     company: "Stitch",
@@ -13,7 +13,7 @@ export const TESTIMONIALS = [
     company: "Relay",
   },
   {
-    quote: "We replaced Jira, Notion, AND Asana with Nexus. The Kanban alone is worth it.",
+    quote: "We replaced Jira, Notion, AND Asana with Sprint AI. The Kanban alone is worth it.",
     name: "Sofia K.",
     role: "Head of Product",
     company: "Arc Labs",
@@ -31,7 +31,7 @@ export const TESTIMONIALS = [
     company: "PixelCraft",
   },
   {
-    quote: "Nexus cut our sprint planning from 3 hours to 20 minutes. The AI roadmap is genuinely magic.",
+    quote: "Sprint AI cut our sprint planning from 3 hours to 20 minutes. The AI roadmap is genuinely magic.",
     name: "Priya N.",
     role: "VP Engineering",
     company: "Stitch",

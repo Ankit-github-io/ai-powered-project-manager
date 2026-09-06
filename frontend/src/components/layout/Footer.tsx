@@ -9,7 +9,7 @@ export function Footer() {
         {/* Brand & Info */}
         <div className="md:col-span-2 space-y-4">
           <div className="flex items-center space-x-2">
-            <span className="text-xl font-bold tracking-tight text-white">Nexus</span>
+            <span className="text-xl font-bold tracking-tight text-white">Sprint Ai</span>
             <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-800 text-neutral-300 font-medium">
               Beta
             </span>
@@ -70,7 +70,7 @@ export function Footer() {
 
       {/* Bottom Copyright */}
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400">
-        <p>&copy; {new Date().getFullYear()} Nexus Inc. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Sprint AI Inc. All rights reserved.</p>
         <p className="mt-4 sm:mt-0">Powered by GPT-4o & NestJS Enterprise Core.</p>
       </div>
     </footer>

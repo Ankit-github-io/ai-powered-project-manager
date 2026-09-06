@@ -1,31 +1,83 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
   providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID || "MOCK_CLIENT_ID",
-      clientSecret: process.env.GITHUB_SECRET || "MOCK_CLIENT_SECRET",
-    }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "MOCK_CLIENT_ID",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "MOCK_CLIENT_SECRET",
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
+    }),
+    {
+      id: "sso",
+      name: "Enterprises SSO",
+      type: "oauth",
+      version: "2.0",
+      authorization: {
+        params: { scope: "openid email profile" },
+      },
+      clientId: process.env.ENTERPRISE_OIDC_CLIENT_ID ?? "",
+      clientSecret: process.env.ENTERPRISE_OIDC_CLIENT_SECRET ?? "",
+      wellKnown: process.env.ENTERPRISE_OIDC_WELL_KNOWN_URL,
+      async profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name ?? profile.preferred_username,
+          email: profile.email,
+          orgId: profile.org_id || "enterprise-default",
+        };
+      },
+    },
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Missing email or password");
+        }
+
+        const user = {
+          id: "1",
+          name: "Enterprise User",
+          email: credentials.email,
+        };
+
+        if (user) {
+          return user;
+        }
+        return null;
+      },
     }),
   ],
-  pages: {
-    signIn: "/login",
+  session: {
+    strategy: "jwt",
   },
   callbacks: {
     async session({ session, token }) {
-      // Direct property tracking without any loose structural casting
-      if (session.user && token.sub) {
-        session.user.id = token.sub;
+      if (token && session.user) {
+        session.user.id = token.sub as string;
       }
       return session;
     },
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id;
+      }
+      return token;
+    },
   },
-};
+  pages: {
+    signIn: "/sign-in",
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

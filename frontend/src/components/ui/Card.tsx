@@ -60,7 +60,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          "h-full bg-[#111111] border rounded-2xl p-7 group transition-all duration-300 overflow-hidden relative flex flex-col justify-between",
+          "relative bg-[#111111] border  group transition-all duration-300",
           isActive
             ? cn("border-[#1e1e1e]", activeStyle.activeBorder)
             : cn("border-[#1e1e1e]", baseStyle.hoverBorder),
@@ -77,11 +77,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
               : cn(baseStyle.glow, "opacity-0 group-hover:opacity-100")
           )}
         />
-
-        {/* 100% Flexible Children Slot */}
-        <div className="relative z-10 flex flex-col h-full w-full">
-          {children}
-        </div>
+        {children}
       </div>
     );
   }

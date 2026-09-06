@@ -10,7 +10,7 @@ export function CTABanner() {
           Start shipping faster today
         </h2>
         <p className="text-[#717171] mb-8 relative">
-          Join 12,000+ teams already using Nexus.
+          Join 12,000+ teams already using Sprint Ai.
         </p>
         <Button
           className="h-12 relative inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-white text-[#0A0A0A] font-semibold text-sm hover:bg-gray-100 transition-all shadow-2xl"

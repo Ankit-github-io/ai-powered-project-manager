@@ -12,7 +12,7 @@ export function HeroSection() {
       <GridTexture />
       <RadialGlow />
       <div className="relative max-w-5xl mx-auto text-center">
-        <PillBadge variant="violet" className="mb-10 px-4 py-1">
+        <PillBadge variant="violet" dotColor="violet" className="mb-10 px-4 py-1">
           <span className="text-[12px]">Powered by GPT-4o · Now in public beta</span>
           <ArrowRight size={12} />
         </PillBadge>
@@ -20,7 +20,7 @@ export function HeroSection() {
         <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-extrabold text-[#EDEDED] leading-[1.05] tracking-[-0.03em] mb-6">
           Manage Projects{" "}
           <span className="relative">
-            <span className="bg-linear-to-r from-violet-400 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-violet-400 via-fuchisa-400 to-cyan-400 bg-clip-text text-transparent">
               10x Faster
             </span>
           </span>

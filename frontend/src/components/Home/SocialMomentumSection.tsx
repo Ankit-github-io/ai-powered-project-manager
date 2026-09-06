@@ -22,7 +22,7 @@ export function SocialMomentumSection() {
         </h2>
         
         <p className="text-[#525252] text-sm leading-relaxed">
-          Nexus gives you the clarity to build better products without the overhead. 
+          Sprint AI gives you the clarity to build better products without the overhead. 
           Stop managing the process, and start shipping the work.
         </p>
       </motion.div>

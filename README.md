@@ -76,12 +76,6 @@ ai-project-management/
 
 ---
 
-## 🛡️ Getting Started & Standards
-
-1. Ensure all system components are written in strict **TypeScript** (Frontend/Backend) and formatted properly.
-2. Maintain strict **4px/8px alignment scale** variables inside Figma components to map neatly into Tailwind layouts.
-3. Do not run heavy model algorithms directly inside the frontend thread; pipeline them safely through the API Gateway layer.
-
 ## 🗃️ Data Lifecycle & TypeScript Contracts
 
 The frontend enforcement layer utilizes unified, strict TypeScript interfaces located at `src/types/index.ts`. Any backend transaction payload or AI system event string must match these types to guarantee data validation continuity.

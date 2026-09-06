@@ -1,10 +1,18 @@
-import { FaMagnifyingGlass, FaBell, FaPlus } from 'react-icons/fa6';
+'react-client';
+
+import { FaMagnifyingGlass, FaBell, FaPlus, FaSun, FaMoon } from 'react-icons/fa6';
+import { UserMenu } from './UserMenu';
+// import { useTheme } from 'next-themes';
 
 interface HeaderProps {
   breadcrumb: string;
+  theme?: string;
+  onToggleTheme?: () => void; // Agar aap custom state ya function use kar rahe hain
 }
 
-export function Header({ breadcrumb }: HeaderProps) {
+export function Header({ breadcrumb, theme, onToggleTheme }: HeaderProps) {
+  // const { theme, setTheme } = useTheme(); // Agar next-themes use kar rahe hain toh yeh un-comment karein
+
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-40">
       <div className="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between">
@@ -27,6 +35,17 @@ export function Header({ breadcrumb }: HeaderProps) {
             />
           </div>
 
+          {/* Theme Toggle Button */}
+          <button 
+            onClick={onToggleTheme} // ya yahan setTheme(theme === 'dark' ? 'light' : 'dark') likh sakte hain
+            className="p-2 rounded-md bg-card border border-border text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            title="Toggle theme"
+          >
+            {/* Aap yahan condition laga sakte hain ki current theme ke hisab se icon aaye */}
+            <FaSun className="w-4 h-4 hidden dark:block" />
+            <FaMoon className="w-4 h-4 block dark:hidden" />
+          </button>
+
           <button className="p-2 rounded-md bg-card border border-border text-muted-foreground hover:text-foreground transition-colors relative cursor-pointer">
             <FaBell className="w-4 h-4" />
             <span className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-primary" />
@@ -36,6 +55,8 @@ export function Header({ breadcrumb }: HeaderProps) {
             <FaPlus className="w-3 h-3" />
             <span>New Project</span>
           </button>
+          
+          <UserMenu />
         </div>
       </div>
     </header>

@@ -1,5 +1,5 @@
-import { Sidebar } from '@/components/layout/Sidebar';
-import { Header } from '@/components/layout/Header';
+
+import { Header } from '@/components/dashboard/Header';
 import { MetricCard } from '@/components/dashboard/MetricCard';
 import { ProjectCard } from '@/components/dashboard/ProjectCard';
 import { Project, Metric } from '@/types/project';
@@ -20,7 +20,6 @@ const PROJECTS_DATA: Project[] = [
 export default function DashboardPage() {
   return (
     <div className="flex min-h-screen bg-[#0D0D0D] text-white">
-      <Sidebar />
       
       <div className="flex-1 flex flex-col min-w-0">
         <Header breadcrumb="Alex's Workspace" />
@@ -28,18 +27,14 @@ export default function DashboardPage() {
         <main className="max-w-[1600px] mx-auto px-6 py-8 w-full">
           {/* Metrics Metrics Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            {METRICS_DATA.map((metric, i) => (
-              <MetricCard key={i} {...metric} />
-            ))}
+            
           </div>
 
           {/* Project List Rendering Component */}
           <div className="space-y-6">
             <h2 className="text-lg font-bold">Active Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {PROJECTS_DATA.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
+              
             </div>
           </div>
         </main>
