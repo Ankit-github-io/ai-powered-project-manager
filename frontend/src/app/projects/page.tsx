@@ -1,11 +1,9 @@
-import { Sidebar } from '@/components/layout/Sidebar';
 import { 
   FaMagnifyingGlass, 
   FaBell, 
   FaPlus, 
   FaClock, 
   FaMessage, 
-  FaEllipsisVertical 
 } from 'react-icons/fa6';
 import { HiSparkles } from 'react-icons/hi2';
 
@@ -13,7 +11,6 @@ export default function ProjectBoardPage() {
   return (
     <div className="flex min-h-screen bg-[#0D0D0D] text-white selection:bg-purple-500 selection:text-white">
       {/* Sidebar Navigation */}
-      <Sidebar />
 
       {/* Main Board Canvas */}
       <div className="flex-1 flex flex-col min-w-0">

@@ -25,7 +25,7 @@ export default function LandingPage() {
 
   if (status==="loading"||status==="authenticated") {
     return (<>
-    <div>hiii im in loding state</div>
+    <div></div>
     </>)
   }
   
