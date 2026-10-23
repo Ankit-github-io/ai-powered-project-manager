@@ -55,7 +55,7 @@ export const KanbanBoard: React.FC = () => {
               key={col.status}
               onDragOver={handleDragOver}
               onDrop={(e) => handleDrop(e, col.status)}
-              className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800/50 min-h-[380px] flex flex-col gap-3 transition-colors duration-200"
+              className="bg-zinc-900/50 rounded-lg p-3 border border-zinc-800/50 min-h-95 flex flex-col gap-3 transition-colors duration-200"
             >
               {/* Column Title Header */}
               <div className="flex items-center justify-between px-1 py-1">
