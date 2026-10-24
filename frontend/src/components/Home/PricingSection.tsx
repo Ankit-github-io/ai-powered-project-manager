@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { PillBadge } from "../ui/pillbadge";
 import { Card, CardTheme } from "../ui/Card";
+import { useRouter } from "next/navigation";
 
 interface PricingTier {
   name: string;
@@ -84,6 +85,7 @@ export const PricingSection = React.forwardRef<
   React.ComponentPropsWithoutRef<"section">
 >(({ className, ...props }, ref) => {
   const [isAnnual, setIsAnnual] = useState(true);
+  const router= useRouter();
 
   return (
     <section
@@ -222,6 +224,7 @@ export const PricingSection = React.forwardRef<
                       ? "text-white bg-violet-600  hover:bg-violet-500 shadow-lg shadow-violet-600/30 transition-colors"
                       : "hover:border-[#3a3a3a] hover:text-[#ededed] hover:bg-[#141414]",
                   )}
+                  onClick={()=>router.push("/sign-up")}
                 >
                   {tier.ctaText}
                 </Button>

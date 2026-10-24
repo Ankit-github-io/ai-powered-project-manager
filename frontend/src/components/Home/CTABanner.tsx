@@ -1,5 +1,6 @@
 import { Icons } from "@/svg/icons";
 import { Button } from "../ui/button";
+import { signIn } from "next-auth/react";
 
 export function CTABanner() {
   return (
@@ -13,6 +14,7 @@ export function CTABanner() {
           Join 12,000+ teams already using Sprint Ai.
         </p>
         <Button
+        onClick={()=>signIn("google",{callbackUrl:"/dashboard"})}
           className="h-12 relative inline-flex items-center gap-3 px-7 py-3.5 rounded-xl bg-white text-[#0A0A0A] font-semibold text-sm hover:bg-gray-100 transition-all shadow-2xl"
         >
           <Icons.google  />

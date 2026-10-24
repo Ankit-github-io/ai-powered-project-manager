@@ -1,7 +1,5 @@
 
 import { Header } from '@/components/dashboard/Header';
-import { MetricCard } from '@/components/dashboard/MetricCard';
-import { ProjectCard } from '@/components/dashboard/ProjectCard';
 import { Project, Metric } from '@/types/project';
 
 // Strictly Mocked Safe Typed Data arrays

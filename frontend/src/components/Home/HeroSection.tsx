@@ -5,8 +5,16 @@ import { GridTexture } from "../ui/background/gridtexture";
 import { RadialGlow } from "../ui/background/radialGlow";
 import { PillBadge } from "../ui/pillbadge";
 import { FloatingUIPreview } from "../ui/FloatingUiPreview";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export function HeroSection() {
+
+  const router = useRouter();
+
+  const handleSocialClick = (provider: string) => {
+      signIn(provider, { callbackUrl: "/dashboard" });
+    };
   return (
     <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
       <GridTexture />
@@ -37,11 +45,12 @@ export function HeroSection() {
           <Button
             className="h-12 px-6 py-3 gap-4 rounded-xl"
             variant="secondary"
+            onClick={()=>{handleSocialClick("google")}}
           >
             <Icons.google />
             Continue with Google
           </Button>
-          <Button className="h-12 gap-4 px-6 py-3 rounded-xl bg-violet-600 text-white font-semibold text-sm hover:bg-violet-500 transition-all shadow-xl shadow-violet-600/30">
+          <Button onClick={()=>router.push("/sign-in")} className="h-12 gap-4 px-6 py-3 rounded-xl bg-violet-600 text-white font-semibold text-sm hover:bg-violet-500 transition-all shadow-xl shadow-violet-600/30">
             Open dashboard
             <ArrowRight
               size={14}
